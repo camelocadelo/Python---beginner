@@ -1,0 +1,9 @@
+def remove_duplicates(original):
+  temp = []
+  for item in original:
+    if (item in temp) == False:
+      temp.append(item)
+  return temp
+
+print remove_duplicates([1, 2, 3, 1, 2, 3, 4])
+#should print: [1, 2, 3, 4]
