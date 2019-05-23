@@ -1,0 +1,8 @@
+def anti_vowel(text):
+  result = ""
+  for i in range(len(text)):
+    if text[i] not in ("a", "e", "i", "o", "u", "A", "E", "I", "O", "U"):
+      result += text[i]  
+  return result
+
+print anti_vowel("kamilla")
