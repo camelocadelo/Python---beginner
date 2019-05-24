@@ -1,0 +1,70 @@
+"""This is a Command Line Calendar which the user can interact with from the command line. The user can: view the calendar, add an event to the calendar, update an existing event and delete it."""
+
+from time import sleep, strftime
+
+the_user_name = "Kamilla"
+
+calendar = {}
+
+def welcome():
+  print "Welcome, " + the_user_name + "!"
+  print "The calendar is opening..."
+  sleep(1)
+  print "The current date is: " + strftime("%A %b %d, %Y")
+  print "The current time is: " + strftime("%H:%M:%S")
+  sleep(1)
+  print "What would you like to do?"
+  
+def start_calendar():
+  welcome()
+  start = True
+  while start:
+    user_choice = raw_input("Enter 'A' to add, 'U' to update, 'V' to view \
+    'D' to delete, 'X' to exit")
+    user_choice = user_choice.upper()
+    if user_choice == "V":
+      if len(calendar.keys()) < 1:
+        print "The calendar is empty"
+      else:
+        print calendar
+    elif user_choice == "U":
+      date = raw_input("What date?: ")
+      update = raw_input("What update?: ")
+      calendar[date] = update
+      print "The date is successfully updated"
+      print calendar
+    elif user_choice == "A":
+      event = raw_input("Enter event: ")
+      date = raw_input("Enter date (MM/DD/YYYY): ")
+      if (len(date) > 10 or int(date[6:]) < int(strftime("%Y"))):
+        print "You entered the invalid date"
+        try_again = raw_input("Try Again? Y for Yes, N for No")
+        try_again = try_again.upper()
+        if try_again == "Y":
+          continue
+        else:
+          start = False
+      else:
+        calendar[date] = event
+        print "The event was successfully added"
+        print calendar
+    elif user_choice == "D":
+      if len(calendar.keys()) < 1:
+        print "The calendar is already empty"
+      else:
+        event = raw_input("What event?")
+        for date in calendar.keys():
+          if calendar[date] == event:
+            del calendar[date]
+            print "The event was succesfully deleted"
+            print calendar
+          else:
+            print "The incorrect date was specified"
+    elif user_choice == "X":
+      start = False
+    else:
+      print "invalid command was entered"
+      start = False
+            
+        
+start_calendar()
