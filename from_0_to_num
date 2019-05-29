@@ -1,0 +1,17 @@
+
+"""Write a function which prints every number from 0 up to the given input.
+If divisible by 3, print "Fizz" instead of the number. If divisible by 5, print "Buzz".
+If input is divisible by 3 AND 5, print "FizzBuzz"."""
+
+def from_0_to_num (number):
+	for i in range(number+1):
+		if i%3 == 0 and i%5 == 0:
+			print ("FizBuzz")
+		elif i%3 == 0:
+			print ("Fizz")
+		elif i%5 == 0:
+			print ("Buzz")
+		else:
+			print (i)
+
+from_0_to_num(20)
