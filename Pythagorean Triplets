@@ -1,0 +1,21 @@
+"""Numbers a, b and c are Pythagorean triplets if a^2 + b^2 = c^2"""
+
+def pythagorean_triplets(lst):
+	lst.sort()
+	for i in range(len(lst)):
+		for j in range(i+1, len(lst)):
+			for k in range(j+1, len(lst)):
+				if ((lst[i])**2) + ((lst[j])**2) == lst[k]**2:
+					print ("Yes")
+	
+	print ("NO")
+	
+#prints "Yes":
+list_test = [5, 4, 3] 
+
+#prints "NO"
+list_test_1 = [4]
+
+#prints "NO"
+list_test_2 = [12, 1, 7, 9]
+pythagorean_triplets(list_test)
